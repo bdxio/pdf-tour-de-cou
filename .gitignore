@@ -1,0 +1,9 @@
+vendor/
+public/vendor/
+.idea/
+public/pdf
+composer.phar
+composer.lock
+*.iml
+*privatekey.p12
+library/Zend
