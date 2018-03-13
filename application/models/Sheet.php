@@ -1,7 +1,5 @@
 <?php
-include APPLICATION_PATH . '/../vendor/autoload.php';
-use Google\Spreadsheet\DefaultServiceRequest;
-use Google\Spreadsheet\ServiceRequestFactory;
+
 
 /**
  * Created by IntelliJ IDEA.
@@ -9,103 +7,192 @@ use Google\Spreadsheet\ServiceRequestFactory;
  * Date: 05/10/2014
  * Time: 18:49
  */
+define('CLIENT_SECRET_PATH_G', APPLICATION_PATH . '/credentials/client_secret.json');
+
 class Model_Sheet
 {
 
-    private $scope = array(
-        'https://www.googleapis.com/auth/drive',
-        'https://spreadsheets.google.com/feeds'
-    );
 
-    private $client = null;
+    private $APPLICATION_NAME = 'PDF Tour de cou';
+    private $CREDENTIALS_PATH = '/tmp/.credentials/drive-php-quickstart.json';
+    private $CLIENT_SECRET_PATH = CLIENT_SECRET_PATH_G;
+    private $SCOPES;
+    private $API_KEY = "AIzaSyBrI7IORdOSlhwSN_1soQhShhYyobS90og";
+    private $NB_BADGES_VIDES = 50;
+    private $file_url = "https://www.googleapis.com/drive/v2/files/1xqaQ1Iszdm7THtu94SNlz_9OXloUr7n1Bif5yk4Vk6s?export=gid=1938063635&format=csv";
 
-    const WORKBOOK_TITLE = 'Inscrits7';
-    const SHEET_NAME = 'Liste inscrits';
-    const GOOGLE_CLIENTID = '191025209153-bs79o95lcn4ouferarmc4qjat9ikhauh.apps.googleusercontent.com';
-    const GOOGLE_ACCOUNT_EMAIL = '191025209153-bs79o95lcn4ouferarmc4qjat9ikhauh@developer.gserviceaccount.com';
-    const GOOGLE_PRIVATEKEY = '/datas/2a74cf461485d11e69b4ab03e032f018a6834ef4-privatekey.p12';
+    private $fileId = "1xqaQ1Iszdm7THtu94SNlz_9OXloUr7n1Bif5yk4Vk6s";
 
     public function __construct()
     {
-        $client = new Google_Client();
-        // Get your credentials from the  Google Developper console
-        $client->setClientId(self::GOOGLE_CLIENTID);
-        $credentials = new Google_Auth_AssertionCredentials(
-            self::GOOGLE_ACCOUNT_EMAIL,
-            $this->scope,
-            file_get_contents(APPLICATION_PATH . self::GOOGLE_PRIVATEKEY));
-        $client->setAssertionCredentials($credentials);
-        $client->setCache(new Google_Cache_Null($client));
 
-        if ($client->isAccessTokenExpired()) {
-            $client->getAuth()->refreshTokenWithAssertion($credentials);
-        }
-
-        $obj_token = json_decode($client->getAccessToken());
-        $accessToken = $obj_token->access_token;
-
-
-        $serviceRequest = new DefaultServiceRequest($accessToken);
-        ServiceRequestFactory::setInstance($serviceRequest);
     }
 
     public function getDatas()
     {
-        $spreadsheetService = new Google\Spreadsheet\SpreadsheetService();
-        $spreadsheetFeed = $spreadsheetService->getSpreadsheets();
-
-        $spreadsheet = $spreadsheetFeed->getByTitle(self::WORKBOOK_TITLE);
-        $worksheetFeed = $spreadsheet->getWorksheets();
-        $worksheet = $worksheetFeed->getByTitle(self::SHEET_NAME);
-        $listFeed = $worksheet->getListFeed();
-
+        $debug = false;
         $datas = array();
-        foreach ($listFeed->getEntries() as $entry) {
-            $values = $entry->getValues();
-            /*
-            For Debug Prupose, uncomment to see the key names
-            $keys = array_keys($values);
-            $keys = array_map('utf8_decode', $keys);
-            echo join(' -- ', $keys).'<br />';
-            die();
-            */
-            if (trim($values['typebadge']) != '' && !in_array($values['nom'], array(1, 2, 3, 4, 5, 6, 7, 8))) {
-                // Remove this line if you want to print all sheets
-                if ($values['aimprimerlorsduprochainbatch'] == 1) {
 
-                    array_push($datas, new Model_People($values['nom'], $values['prénom'], $values['typebadge']));
-                    /*
-                    This is for updating the spreadsheet
-                    $values['badgeimprimé'] == 1;
-                    $values['badgeàréimprimer'] == 0;
-                    $entry->update($values);
-                    */
+        $file = APPLICATION_PATH . '/datas/Inscrits bdxio 2017 - Liste inscrits_F.csv';
+
+        if (is_file($file)) {
+            $row = 1;
+            if (($handle = fopen($file, "r")) !== FALSE) {
+                while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+
+                    $prenom = $data[1];
+                    $nom = $data[2];
+                    if( $prenom == '' && $nom == ''){
+                        continue;
+                    }
+                    $typebadge = trim(strtolower($data[5]));
+                    $aimprimerlorsduprochainbatch = $data[9];
+                    $societe = trim($data[6]);
+                    $logoUrl = trim($data[7]);
+                    $login = trim($data[15]);
+                    $password = trim($data[16]);
+                    $logo = '';
+                    if ($logoUrl != '') {
+                        $logo = $this->getImageFromUrl($logoUrl, $societe);
+                    }
+
+                    if ($debug) {
+                        echo $prenom . " - " . $nom . ' - ' . $typebadge . '-' . $aimprimerlorsduprochainbatch . ' - ';
+                        echo $societe . " - " . $logo . "<br />";
+                    }
+
+
+                    if ($typebadge !== '') {
+                        //   echo "ee";
+                        // Remove this line if you want to print all sheets
+                        if ($aimprimerlorsduprochainbatch == 1) {
+                            if (!$debug) {
+                                array_push($datas, new Model_People($nom, $prenom, $typebadge, $societe, $logo, $login, $password));
+                            }
+                        }
+                    }
+                    $row++;
                 }
             }
-
+            fclose($handle);
         }
-
-
 
 
         /*
          * Sort data by name,
          * Commented, because it's easier to find charly ...
-        usort($datas, function ($a, $b) {
-            return strcmp($a->getFullname(), $b->getFullname());
-        });
+            usort($datas, function ($a, $b) {
+                return strcmp($a->getFullname(), $b->getFullname());
+            });
         */
 
 
-
         // Impresssion des vides
-        for($i = 0; $i<=30; $i++){
-            array_push($datas, new Model_People("", "", "participant"));
+        for ($i = 0; $i <= $this->NB_BADGES_VIDES; $i++) {
+            array_push($datas, new Model_People("", "", "participant", "", ""));
         }
-
+        //var_dump($datas);die();
         return $datas;
 
     }
 
+    private function getImageFromUrl($logoUrl, $societe)
+    {
+
+        $hash = md5($societe);
+        $directory = "/tmp";
+        $file = $directory . '/' . $hash;
+        $files = glob($file . '.');
+        if (count($files) == 0) {
+
+            if ($this->isValidImageUrl($logoUrl)) {
+
+                $imgSrc = file_get_contents($logoUrl);
+                if ($imgSrc) {
+                    file_put_contents($file, $imgSrc);
+                    $file_info = new finfo(FILEINFO_MIME_TYPE);
+                    $mime_type = $file_info->buffer(file_get_contents($file));
+                    // http://php.net/manual/fr/function.image-type-to-mime-type.php
+
+                    switch ($mime_type) {
+                        case image_type_to_mime_type(IMAGETYPE_GIF):
+                            $extension = "gif";
+                            break;
+                        case image_type_to_mime_type(IMAGETYPE_JPEG):
+                            $extension = "jpg";
+                            break;
+                        case image_type_to_mime_type(IMAGETYPE_PNG):
+                            $extension = "png";
+                            break;
+                        default:
+                            Model_Log::log("Unknown Mime Type :: " . $mime_type . ' (setting no logo) :: ' . $logoUrl);
+                            //$extension = "bmp";
+                            return '';
+
+                    }
+                    if (copy($file, $file . "." . $extension)) {
+                        unlink($file);
+                        return $file . "." . $extension;
+                    }
+                } else {
+                    Model_Log::log("Unable to Download :: " . $societe . ' :: ' . $logoUrl);
+                    return '';
+                }
+
+            }
+        } else {
+            return $files[0];
+        }
+    }
+
+
+    function isValidImageUrl($url){
+        if (preg_match('/^(http|https)/', $url)){
+            return true;
+        } else {
+            echo $url." NOT A VALID IMAGE URL \n";
+            return false;
+        }
+    }
+
+    /**
+     * Returns an authorized API client.
+     * @return Google_Client the authorized client object
+     */
+    function getClient()
+    {
+        $client = new Google_Client();
+        $client->setApplicationName($this->APPLICATION_NAME);
+
+        $client->setDeveloperKey($this->API_KEY);
+
+        return $client;
+    }
+
+
+    /**
+     * Download a file's content.
+     *
+     * @param Google_Servie_Drive $service Drive API service instance.
+     * @param Google_Servie_Drive_DriveFile $file Drive File instance.
+     * @return String The file's content if successful, null otherwise.
+     */
+    function downloadFile($service, $file)
+    {
+        $downloadUrl = $file->getDownloadUrl();
+        if ($downloadUrl) {
+            $request = new Google_Http_Request($downloadUrl, 'GET', null, null);
+            $httpRequest = $service->getClient()->getAuth()->authenticatedRequest($request);
+            if ($httpRequest->getResponseHttpCode() == 200) {
+                return $httpRequest->getResponseBody();
+            } else {
+                // An error occurred.
+                return null;
+            }
+        } else {
+            // The file doesn't have any content stored on Drive.
+            return null;
+        }
+    }
 
 }

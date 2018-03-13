@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>twothirds.fr</title>
+	
+		<meta property="og:title" content="twothirds.fr - Studio indépendant de jeux vidéo, programmation logicielle, création de sites internet" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://www.twothirds.fr" />
+	<meta property="og:image" content="http://twothirds.fr/medias/logo-plain.png" />
+	
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="http://twothirds.fr/wp-content/themes/onethirdv5/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://twothirds.fr/wp-content/themes/onethirdv5/style.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#summary-cta").click(function() {
+				$('html, body').animate({
+					scrollTop: $("#expertise").offset().top
+				}, 1000);
+			});
+			
+			$("#expertise-cta").click(function() {
+				$('html, body').animate({
+					scrollTop: $("#portfolio").offset().top
+				}, 1000);
+			});
+			
+			$("#portfolio-cta").click(function() {
+				$('html, body').animate({
+					scrollTop: $("#references").offset().top
+				}, 1000);
+			});
+			
+			$("#references-cta").click(function() {
+				$('html, body').animate({
+					scrollTop: $("#blog").offset().top
+				}, 1000);
+			});
+			
+			$("#blog-cta").click(function() {
+				$('html, body').animate({
+					scrollTop: $("#contact").offset().top
+				}, 1000);
+			});
+			
+			/*$("#contact-cta").click(function() {
+				$('html, body').animate({
+					scrollTop: $("#references").offset().top
+				}, 1000);
+			});*/
+			
+			$("#back-to-up").click(function() {
+				$('html, body').animate({
+					scrollTop: 0
+				}, 1000);
+			});
+		});
+	</script>
+  </head>
+  <body>
+	<div id="content" class="container-fluid">
+				<div id="summary" class="row">
+			<section id="summary-content" class="col-sm-10" style="height: 100%; position: absolute;">
+				<ul>
+					<li>Studio indépendant de jeux vidéo</li>
+					<li>Programmation logicielle</li>
+					<li>Création de sites internet</li>
+				</ul>
+				<h1><img src="medias/logo-plain.png">twothirds.fr<small>nous suivons les joueurs</small></h1>
+				<button id="summary-cta" type="button" class="btn btn-default">&darr;</button>
+			</section>
+			<aside id="summary-aside" class="col-sm-2"></aside>
+		</div>
+		
+		<div id="expertise" class="row">
+			<section id="expertise-content" class="col-sm-10">
+				<h2>Expertise</h2>
+				<div id="description" class="container-fluid">
+					<div class="row">
+						<div class="col-sm-3">
+							<img src="medias/thomas-gainant.jpg">
+						</div>
+						<div class="col-sm-9">
+							<p><a href="https://gainant.fr/files/cv2016-2017.pdf">Thomas Gainant</a> dirige l'entreprise "twothirds", une entreprise de développement logiciel et multimédia basée à Bordeaux, en France, qui lui permet de déployer ses compétences en tant que freelance. Nous avons de multiples expériences dans le développement de jeux vidéo, le développement logiciel et le développement web et nous proposons nos compétences pour vos projets dans ces domaines.</p>
+							<p>Nous sommes experts sur la technologie Unity3d avec plusieurs projets de jeux vidéo et applications interactives publiés, que ce soit des projets maisons ou des projets en tant que sous-traitants.</p>
+							<p>Ancien développeur Java pour Android et développeur web PHP, devenu spécialiste du temps réel et du jeu vidéo sur Unreal Engine et Unity3d, Thomas Gainant a su construire autour de son activité de freelance un réseau d'autres freelances offshores pouvant aider à la création de projets vidéo-ludiques et de logiciels poussés en temps réel.</p>
+							<p><strong>Intelligence artificielle, performance poussée et visualisation graphique 3D sont autant de particularités nécessaires à la réalisation d'un jeu vidéo et qui peuvent être appliquées à votre projet logiciel.</strong></p>
+							<p>Les technologies et langages sur lesquelles nous sommes les plus à l'aise sont Unity3d, C# (.NET/Mono), PHP, Javascript, HTML/CSS, Unreal Engine, Java et C++. Nous avons plusieurs années d'expérience avec ces technologies et langages, y compris en environnement international.</p>						</div>
+					</div>
+				</div>
+				<p>Nous sommes experts dans les technologies suivantes :</p>
+				<div id="technologies" class="container-fluid">
+					<div class="row">
+						<div class="col-sm-6">
+							<a href="http://unity3d.com" class=""><img src="medias/unity3D.png" style="max-height: 200px;"></a>
+						</div>
+						<div class="col-sm-6">
+							<a href="https://www.microsoft.com/net" class=""><img src="medias/dotnet-logo.png" style="max-height: 200px;"></a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<a href="http://www.mono-project.com" class=""><img src="medias/mono.png" style="max-height: 200px;"></a>
+						</div>
+						<div class="col-sm-6">
+							<a href="https://angularjs.org" class=""><img src="https://angularjs.org/img/AngularJS-large.png" style="max-height: 200px;"></a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<a href="http://getbootstrap.com" class=""><img src="medias/bootstrap.png" style="max-height: 200px;"></a>
+						</div>
+						<div class="col-sm-6">
+							<a href="https://wordpress.org" class=""><img src="medias/wordpress-logo.png" style="max-height: 200px;"></a>
+						</div>
+					</div>
+				</div>
+				<p></p>
+				<button id="expertise-cta" type="button" class="btn btn-default">&darr;</button>
+			</section>
+			<aside id="expertise-aside" class="col-sm-2"></aside>
+		</div>
+		
+		<div id="portfolio" class="row">
+			<section id="portfolio-content" class="col-sm-10">
+				<h2>Réalisations</h2>
+				<div id="portfolio-projects" class="container-fluid">
+					<div class="row"><!--Four project per row-->
+						<div class="col-sm-4">
+							<div class="thumbnail">
+								<img src="medias/shapeless-dungeon.png" alt="Shapeless Dungeon">
+								<div class="caption">
+									<h3>Shapeless Dungeon</h3>
+									<p>Jeu réalisé en 48h à l'issue du <a href="http://ludumdare.com/">Ludum Dare</a> #35 en partenariat avec <a href="http://bahototh.blogspot.fr/">Thomas "Bahototh" Finholm</a>.</p>
+									<p><a href="http://ludumdare.com/compo/ludum-dare-35/?action=preview&uid=20076" class="btn btn-primary" role="button">Jouer au jeu</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="thumbnail">
+								<img src="https://www.twothirds.fr/blinko/Resources/blinko-blue-logo.png" alt="Shapeless Dungeon">
+								<div class="caption">
+									<h3>Blinko</h3>
+									<p>Jeu en ligne de hasard réalisé pour le compte d'un client, utilisant la technologie Canvas avec <a href="http://mpalmerlee.github.io/Stratiscape/">Stratiscape</a>.</p>
+									<p><a href="http://twothirds.fr/blinko" class="btn btn-primary" role="button">Jouer au jeu</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="thumbnail">
+								<img src="medias/logo-stock-place.png" alt="stock.place logo">
+								<div class="caption">
+									<h3>stock.place</h3>
+									<p>Application web de gestion de stocks, utilisée comme démonstration et en développement continu.</p>
+									<p><a href="http://stock.place" class="btn btn-primary" role="button">Visiter le site</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="thumbnail">
+								<img src="medias/wacky-docks-icon.png" alt="Wacky Docks! logo">
+								<div class="caption">
+									<h3>Wacky Docks!</h3>
+									<p>Jeu mobile de réflexe réalisé pour Android en deux mois et demi et en C# sur le moteur <a href="http://unity3d.com">Unity3d</a>.</p>
+									<p><a href="https://play.google.com/store/apps/details?id=fr.twothirds.wackydocksgame" class="btn btn-primary" role="button">Jouer au jeu</a> <a href="http://twothirds.fr/wackydocks" class="btn btn-default" role="button">Visiter le site officiel</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button id="portfolio-cta" type="button" class="btn btn-default">&darr;</button>
+			</section>
+			<aside id="portfolio-aside" class="col-sm-2"></aside>
+		</div>
+		<!--<div id="devis" class="row">
+			<section id="devis-content" class="col-sm-10">
+				<h2>Devis</h2>
+				<p>Recevez un devis en cinq minutes.</p>
+			</section>
+			<aside id="devis-aside" class="col-sm-2"></aside>
+		</div>-->
+		
+		<div id="references" class="row">
+			<section id="references-content" class="col-sm-10">
+				<h2>Références</h2>
+				<p>Nous avons travaillé pour les entités suivantes.</p>
+				<div id="clients" class="container-fluid">
+					<div class="row">
+						<div class="col-sm-6">
+							<a href="http://www.dsc-studio22.fr" class=""><img src="medias/DSCStudio22.png"></a>
+						</div>
+						<div class="col-sm-6">
+							<a href="http://www.cea.fr" class=""><img src="medias/cea.png"></a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<a href="http://www.defense.gouv.fr/dga" class=""><img src="medias/logo-dga.jpg"></a>
+						</div>
+						<div class="col-sm-6">
+							<a href="http://beview.fr" class=""><img src="medias/beview.png"></a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<a href="#" class=""><img src="medias/ecole-francaise-de-poker.jpg"></a>
+						</div>
+						<div class="col-sm-6">
+							<a href="#" class=""><img src="medias/ka-games.png"></a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<a href="http://www.fractalecorp.fr" class=""><img src="medias/fractale-corp.jpg"></a>
+						</div>
+						<div class="col-sm-6">
+							<a href="http://www.madcowpictures.com" class=""><img src="medias/mad-cow-pictures.png"></a>
+						</div>
+					</div>
+				</div>
+				<button id="references-cta" type="button" class="btn btn-default">&darr;</button>
+			</section>
+			<aside id="references-aside" class="col-sm-2"></aside>
+		</div>
+		<div id="blog" class="row">
+			<section id="blog-content" class="col-sm-10">
+				<h2>Journal</h2>
+				
+									<div id="posts" class="container-fluid">
+											<div class="post row">
+							<div class="post-image col-sm-3">
+								<!--<img src="medias/mad-cow-pictures.png">-->
+																<img src="http://twothirds.fr/medias/20160511_101715.jpg">
+							</div>
+							<div class="col-sm-9">
+								<h3><a href="http://twothirds.fr/nouvelle-version-de-notre-site/">Quelques nouvelles nous concernant et une nouvelle version pour notre site</a></h3>
+								<p>Et oui, cela fait presque six mois sans nouvelles sur le blog de twothirds.fr mais nous y voici !</p>
+								<div class="container-fluid">
+									<div class="row">
+										<div class="blog-post-excerpt-date label label-default col-sm-3">Publié le 2016-09-23 à 16:04 </div><div class="col-sm-6">&nbsp;</div><div class="col-sm-3"><a href="http://twothirds.fr/nouvelle-version-de-notre-site/" class="btn btn-primary">Lire</a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+											<div class="post row">
+							<div class="post-image col-sm-3">
+								<!--<img src="medias/mad-cow-pictures.png">-->
+																<img src="http://twothirds.fr/medias/2015/12/music-festival-tycoon-logo-small.png">
+							</div>
+							<div class="col-sm-9">
+								<h3><a href="http://twothirds.fr/le-developpement-de-music-festival-tycoon-mis-en-pause/">Le développement de Music Festival Tycoon mis en pause</a></h3>
+								<p>Le budget, toujours le budget. L&rsquo;argent est le nerf de la guerre et nous ne pourrons plus nous battre si nous manquons de ressources. Durant le développement de notre dernier projet Music Festival Tycoon, nous avons dû utiliser beaucoup de notre temps pour obtenir l&rsquo;argent nécessaire. twothirds est également une force de sous-traitance et nous [&hellip;]</p>
+								<div class="container-fluid">
+									<div class="row">
+										<div class="blog-post-excerpt-date label label-default col-sm-3">Publié le 2016-04-28 à 8:41 </div><div class="col-sm-6">&nbsp;</div><div class="col-sm-3"><a href="http://twothirds.fr/le-developpement-de-music-festival-tycoon-mis-en-pause/" class="btn btn-primary">Lire</a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+											<div class="post row">
+							<div class="post-image col-sm-3">
+								<!--<img src="medias/mad-cow-pictures.png">-->
+																<img src="http://twothirds.fr/medias/2015/12/music-festival-tycoon-logo-small.png">
+							</div>
+							<div class="col-sm-9">
+								<h3><a href="http://twothirds.fr/notre-nouveau-projet-music-festival-tycoon/">Notre nouveau projet : Music Festival Tycoon</a></h3>
+								<p>Nous sommes à twothirds plus qu&rsquo;heureux aujourd&rsquo;hui d&rsquo;annoncer publiquement le projet sur lequel nous travaillons depuis plusieurs mois. Il s&rsquo;agit de &laquo;&nbsp;Music Festival Tycoon&laquo;&nbsp;, un jeu vidéo de gestion de festival de musique que nous comptons sortir au printemps 2016. L&rsquo;objectif de ce jeu sera pour le joueur de gérer avec brio des festivals de musique [&hellip;]</p>
+								<div class="container-fluid">
+									<div class="row">
+										<div class="blog-post-excerpt-date label label-default col-sm-3">Publié le 2015-12-16 à 9:53 </div><div class="col-sm-6">&nbsp;</div><div class="col-sm-3"><a href="http://twothirds.fr/notre-nouveau-projet-music-festival-tycoon/" class="btn btn-primary">Lire</a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+	<nav class="navigation pagination" role="navigation">
+		<h2 class="screen-reader-text"> </h2>
+		<div class="nav-links"><span class='page-numbers current'>1</span>
+<a class='page-numbers' href='http://twothirds.fr/page/2/'>2</a>
+<span class="page-numbers dots">&hellip;</span>
+<a class='page-numbers' href='http://twothirds.fr/page/4/'>4</a>
+<a class="next page-numbers" href="http://twothirds.fr/page/2/">Page suivante</a></div>
+	</nav>					</div>
+								<button id="blog-cta" type="button" class="btn btn-default">&darr;</button>
+			</section>
+			<aside id="blog-aside" class="col-sm-2"></aside>
+		</div>
+		<div id="contact" class="row">
+			<section id="contact-content" class="col-sm-10">
+				<h2>Contact</h2>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2827.6319894449343!2d-0.6085340842173145!3d44.86978618092865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd54d7ddd5b45669%3A0x6c79a3141fd1c46c!2s27+Rue+des+%C3%89cus%2C+33110+Le+Bouscat!5e0!3m2!1sfr!2sfr!4v1473872768538" height="300" width="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-6 contact-col-left">
+							<ul>
+								<li><strong>twothirds.fr</strong></li>
+								<li>27 rue des écus</li>
+								<li>33110 Le Bouscat</li>
+								<li>FRANCE</li>
+							</ul>
+						</div>
+						<div class="col-sm-6 contact-col-right">
+							<ul>
+								<li>&nbsp;</li>
+								<li><a href="mailto:c&#111;&#110;t&#97;ct&#64;twot&#104;i&#114;&#100;s&#46;f&#114;">&#99;&#111;nta&#99;t&#64;&#116;&#119;&#111;third&#115;.&#102;&#114;</a></li>
+								<li>&#48;63&#50;8&#48;99&#57;&#54;</li>
+								<li>&nbsp;</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<button id="back-to-up" type="button" class="btn btn-default">&uarr;</button>
+			</section>
+			<aside id="contact-aside" class="col-sm-2"></aside>
+		</div>
+			</div>
+  </body>
+</html>

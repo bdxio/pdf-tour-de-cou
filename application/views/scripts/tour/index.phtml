@@ -11,10 +11,9 @@
     <?php
     foreach($this->files as $file){
         echo "<li>";
-        echo '<a target="_blank" href="/pdf/'.substr($file, strrpos($file, '/')+1).'">';
+        echo '<a target="_blank" href="/pdf/index/file/'.substr($file, strrpos($file, '/')+1).'">';
         echo $file;
-        echo "</a> -- ";
-        echo '<a target="_blank" href="/index/update/file/'.substr($file, strrpos($file, '/')+1).'">METTRE A JOUR DANS LA SPREADSHEET (KO)</a>';
+        echo "</a>";
         echo "</li>";
     }
     ?>

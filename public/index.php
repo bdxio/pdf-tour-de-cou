@@ -1,6 +1,4 @@
 <?php
-
-
 // Define path to application directory
 defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
@@ -14,12 +12,16 @@ set_include_path(implode(PATH_SEPARATOR, array(
     realpath(APPLICATION_PATH . '/../library'),
     get_include_path(),
 )));
+ini_set('memory_limit', '4096M');
+set_time_limit(4500);
 
-//require APPLICATION_PATH .'/../vendor/autoload.php';
+date_default_timezone_set('Europe/Paris');
+
+require_once dirname(__FILE__) .'/../vendor/autoload.php';
 
 /** Zend_Application */
 require_once 'Zend/Application.php';
-
+session_start();
 // Create application, bootstrap, and run
 $application = new Zend_Application(
     APPLICATION_ENV,

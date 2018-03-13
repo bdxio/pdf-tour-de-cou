@@ -9,7 +9,10 @@
 class TourController extends Zend_Controller_Action
 {
 
-    const VERSION = "v5";
+    const VERSION = "v10";
+    /**
+     * @var Model_Service
+     */
     private $service = null;
     private $directory = '';
 
@@ -21,7 +24,8 @@ class TourController extends Zend_Controller_Action
     {
         /* Initialize action controller here */
         $this->service = new Model_Service();
-        $this->directory = realpath(APPLICATION_PATH . "/../public/pdf/");
+        //$this->directory = realpath(APPLICATION_PATH . "/../public/pdf/");
+        $this->directory = realpath("/tmp");
         $this->imgPath = realpath(APPLICATION_PATH . "/datas/images/");
         $this->fileName = "PDF-TOURDECOU-A6-" . self::VERSION . " - " . date('dmYHis', time());
     }
@@ -29,7 +33,7 @@ class TourController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        ini_set("memory_limit", "1024M");
+        ini_set("memory_limit", "2048M");
         // Create FileName
         $this->createPdf();
 
@@ -84,16 +88,16 @@ class TourController extends Zend_Controller_Action
         $image = '';
         switch (strtolower($participant->getType())) {
             case 'orga';
-                $image = $this->imgPath .'/badge-orga.jpeg';
+                $image = $this->imgPath .'/badge-orga.jpg';
                 break;
             case 'etudiant';
-                $image = $this->imgPath .'/badge-etudiant.jpeg';
+                $image = $this->imgPath .'/badge-etudiant.jpg';
                 break;
             case 'speaker';
-                $image = $this->imgPath .'/badge-speaker.jpeg';
+                $image = $this->imgPath .'/badge-speaker.jpg';
                 break;
             case 'participant':
-                $image = $this->imgPath .'/badge-participant.jpeg';
+                $image = $this->imgPath .'/badge-participant.jpg';
                 break;
             default:
                 $this->view->logged[] = $participant;
@@ -123,11 +127,11 @@ class TourController extends Zend_Controller_Action
         $this->view->logged = array();
         $printed = array();
         $datas = $this->getDatas();
-
-        $step = 500;
+        $step = 50;
         $limit = $step;
         $i=0;
         while($i < count($datas) ){
+            /** @var Model_People $participant */
             $participant = $datas[$i];
             $carton = new Model_Carton(Model_Carton::PAGE_SIZE_A6);
             $image = $this->getImage($participant);
@@ -136,7 +140,7 @@ class TourController extends Zend_Controller_Action
                 $this->view->logged[] =  $participant->__toArray();
                 continue;
             } else {
-                $carton->drawCard($participant->formatPrenom(), $participant->formatNom(), $image);
+                $carton->drawCard($participant, $image);
                 $cartons->add($carton);
                 array_push($printed, $participant->__toArray());
             }
@@ -152,7 +156,7 @@ class TourController extends Zend_Controller_Action
         }
 
         $cartons->save($this->getPdfFile());
-        //$cartons->save($this->getPdfFile());
+
         $this->createCSV($printed);
     }
 
@@ -163,6 +167,7 @@ class TourController extends Zend_Controller_Action
             fputcsv($f, $v);
         }
     }
+
 
 
 }

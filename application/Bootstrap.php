@@ -14,5 +14,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $autoloader;
     }
 
+    protected function _initLogger() {
+        $this->bootstrap("log");
+        $logger = $this->getResource("log");
+        Zend_Registry::set("Zend_Log", $logger);
+    }
+
+
 }
 
