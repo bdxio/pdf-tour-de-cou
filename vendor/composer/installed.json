@@ -1,0 +1,100 @@
+[
+    {
+        "name": "asimlqt/php-google-spreadsheet-client",
+        "version": "2.3.5",
+        "version_normalized": "2.3.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/asimlqt/php-google-spreadsheet-client.git",
+            "reference": "9cb74ee0670e3928d6b40dd53164c3f09c65e309"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/asimlqt/php-google-spreadsheet-client/zipball/9cb74ee0670e3928d6b40dd53164c3f09c65e309",
+            "reference": "9cb74ee0670e3928d6b40dd53164c3f09c65e309",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.4.2"
+        },
+        "time": "2015-06-21 10:59:02",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Google\\": "src/Google"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Asim Liaquat",
+                "email": "asimlqt22@gmail.com",
+                "role": "Developer"
+            },
+            {
+                "name": "Martin Czygan",
+                "email": "martin.czygan@gmail.com",
+                "homepage": "http://twitter.com/cvvfj",
+                "role": "Packager"
+            }
+        ],
+        "description": "Google Spreadsheet PHP Client",
+        "homepage": "https://github.com/asimlqt/php-google-spreadsheet-client",
+        "keywords": [
+            "google",
+            "spreadsheet"
+        ]
+    },
+    {
+        "name": "google/apiclient",
+        "version": "1.1.5",
+        "version_normalized": "1.1.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/google/google-api-php-client.git",
+            "reference": "2bc00ec4e8fa1a5eec793d800fac339f30b730db"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/google/google-api-php-client/zipball/2bc00ec4e8fa1a5eec793d800fac339f30b730db",
+            "reference": "2bc00ec4e8fa1a5eec793d800fac339f30b730db",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*",
+            "squizlabs/php_codesniffer": "~2.3"
+        },
+        "time": "2015-09-23 04:19:33",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "Client library for Google APIs",
+        "homepage": "http://developers.google.com/api-client-library/php",
+        "keywords": [
+            "google"
+        ]
+    }
+]

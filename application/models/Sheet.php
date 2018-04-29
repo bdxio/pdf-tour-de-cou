@@ -2,26 +2,13 @@
 
 
 /**
- * Created by IntelliJ IDEA.
  * User: remi
  * Date: 05/10/2014
  * Time: 18:49
  */
-define('CLIENT_SECRET_PATH_G', APPLICATION_PATH . '/credentials/client_secret.json');
-
 class Model_Sheet
 {
-
-
-    private $APPLICATION_NAME = 'PDF Tour de cou';
-    private $CREDENTIALS_PATH = '/tmp/.credentials/drive-php-quickstart.json';
-    private $CLIENT_SECRET_PATH = CLIENT_SECRET_PATH_G;
-    private $SCOPES;
-    private $API_KEY = "AIzaSyBrI7IORdOSlhwSN_1soQhShhYyobS90og";
     private $NB_BADGES_VIDES = 50;
-    private $file_url = "https://www.googleapis.com/drive/v2/files/1xqaQ1Iszdm7THtu94SNlz_9OXloUr7n1Bif5yk4Vk6s?export=gid=1938063635&format=csv";
-
-    private $fileId = "1xqaQ1Iszdm7THtu94SNlz_9OXloUr7n1Bif5yk4Vk6s";
 
     public function __construct()
     {
@@ -32,8 +19,12 @@ class Model_Sheet
     {
         $debug = false;
         $datas = array();
+        $file = APPLICATION_PATH . "/datas/inscrits.csv";
+        if( $_REQUEST['file'] && $_REQUEST['file'] !== ''){
+            $file = APPLICATION_PATH . "/datas/".$_REQUEST['file'];
+        }
+        
 
-        $file = APPLICATION_PATH . '/datas/Inscrits bdxio 2017 - Liste inscrits_F.csv';
 
         if (is_file($file)) {
             $row = 1;
@@ -75,6 +66,8 @@ class Model_Sheet
                 }
             }
             fclose($handle);
+        } else {
+            throw new Exception('File '.$file.' does not exists');
         }
 
 
@@ -91,7 +84,7 @@ class Model_Sheet
         for ($i = 0; $i <= $this->NB_BADGES_VIDES; $i++) {
             array_push($datas, new Model_People("", "", "participant", "", ""));
         }
-        //var_dump($datas);die();
+    
         return $datas;
 
     }
@@ -155,44 +148,5 @@ class Model_Sheet
         }
     }
 
-    /**
-     * Returns an authorized API client.
-     * @return Google_Client the authorized client object
-     */
-    function getClient()
-    {
-        $client = new Google_Client();
-        $client->setApplicationName($this->APPLICATION_NAME);
-
-        $client->setDeveloperKey($this->API_KEY);
-
-        return $client;
-    }
-
-
-    /**
-     * Download a file's content.
-     *
-     * @param Google_Servie_Drive $service Drive API service instance.
-     * @param Google_Servie_Drive_DriveFile $file Drive File instance.
-     * @return String The file's content if successful, null otherwise.
-     */
-    function downloadFile($service, $file)
-    {
-        $downloadUrl = $file->getDownloadUrl();
-        if ($downloadUrl) {
-            $request = new Google_Http_Request($downloadUrl, 'GET', null, null);
-            $httpRequest = $service->getClient()->getAuth()->authenticatedRequest($request);
-            if ($httpRequest->getResponseHttpCode() == 200) {
-                return $httpRequest->getResponseBody();
-            } else {
-                // An error occurred.
-                return null;
-            }
-        } else {
-            // The file doesn't have any content stored on Drive.
-            return null;
-        }
-    }
 
 }
